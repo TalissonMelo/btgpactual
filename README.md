@@ -47,22 +47,22 @@ Processar pedidos e gerar relatório.
 Exemplo da mensagem que deve ser consumida:
 
 ```
-   {
-       "codigoPedido": 1001,
-       "codigoCliente":1,
-       "itens": [
-           {
-               "produto": "lápis",
-               "quantidade": 100,
-               "preco": 1.10
-           },
-           {
-               "produto": "caderno",
-               "quantidade": 10,
-               "preco": 1.00
-           }
-       ]
-   }
+  {
+   "orderId":1,
+   "clientId":30,
+   "items":[
+      {
+         "product":"Controle de PS4",
+         "amount":2,
+         "price":30.00
+      },
+      {
+         "product":"PS5",
+         "amount":1,
+         "price":4640.00
+      }
+   ]
+  }
 ```
 
 

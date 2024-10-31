@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  btgpactual:
+    image: talissonmelo/btgpactual:latest
+    environment:
+      APPLICATION_NAME: btgpactual
+      MONGODB_AUTH_DB: admin
+      MONGODB_AUTO_INDEX: true
+      MONGODB_HOST: mongodb
+      MONGODB_PORT: 27017
+      MONGODB_DB: btgpactualdb
+      MONGODB_USERNAME: admin
+      MONGODB_PASSWORD: 123457
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: guest
+      RABBITMQ_PASSWORD: guest
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
+      - rabbitmq
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123457
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
